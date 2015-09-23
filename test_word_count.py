@@ -14,7 +14,7 @@ def word_count(file_name):
 	return count
 
 if __name__ == '__main__':
-	file_name='test_file.py'
+	file_name='test_word_count.py'
 	count=word_count(file_name)
 	print('count= %s' % count)
 	print(1)
