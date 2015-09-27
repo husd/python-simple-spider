@@ -24,12 +24,16 @@ class Student(object):
 		self.age=age
 		self.score=score
 
-	def student2dict(std):
-		return{
-			'name':std.name,
-			'age':std.age,
-			'score':std.score
-		}
+
+def student2dict(std):
+	return{
+		'name':std.name,
+		'age':std.age,
+		'score':std.score
+	}
+
+def dict2student(dict):
+	return Student(dict['name'], dict['age'], dict['score'])
 
 #把一个json转换为python对象
 def test_json_to_python():
@@ -38,21 +42,25 @@ def test_json_to_python():
 	print('json format of d is %s ' % d_json)
 
 	s=Student('husd', 20, 80)
-	print(s.student2dict())
-	# print(s.name)
-	# print(s.age)
-	# print(s.score)
-	#student_json=json.dumps(s,default=student2dict)
-	#print(student_json)
+	student_json=json.dumps(s,default=student2dict)
+	print('stduent json is :' + student_json)
 	pass
 
 #把一个python对象转换为json
 def test_python_to_json():
 	json_str = '{"age": 20, "score": 88, "name": "Bob"}'
 	python_ob=json.loads(json_str)
+	print('dict start ...')
 	print(python_ob['age'])
 	print(python_ob['score'])
 	print(python_ob['name'])
+	print('dict end...')
+
+	print('dict to python object ')
+	#这个是把json对象转换为python对象，需要定义一个函数来转换这个对象
+	student_test=json.loads(json_str,object_hook=dict2student)
+	print('student_test is : \n')
+	print(student_test.name)
 	pass
 
 
