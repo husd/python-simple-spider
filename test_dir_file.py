@@ -46,5 +46,8 @@ if __name__ == '__main__':
 	print(temp)
 	list_path_order()
 	show_all_file_in_path()
+	str_test_in='58.txt'
+	if '58' in str_test_in:
+		print('58 in %s' % str_test_in)
 
 
