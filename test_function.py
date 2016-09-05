@@ -1,19 +1,22 @@
 #!/usr/bin/python
-#coding=utf-8
+# coding=utf-8
 
 import math
 
+
 def test_input():
-	input_str=input('input some number :')
-	input_int=int(input_str)
-	if input_int < 1000:
-		print('less then 1000')
-	else:
-		print('more then 1000')
+    input_str = input('input some number :')
+    input_int = int(input_str)
+    if input_int < 1000:
+        print('less then 1000')
+    else:
+        print('more then 1000')
+
 
 def test_init_list():
-	list_init=list(range(0,10))
-	print(list_init)
+    list_init = list(range(0, 10))
+    print(list_init)
+
 
 '''
 
@@ -30,12 +33,15 @@ def test_init_list():
 	注意：返回值不可变
 
 '''
-def test_move_point(x,y,step,angle=0):
-	nx=x+step * math.cos(angle)
-	ny=y-step * math.sin(angle)
-	#如果函数没有返回值的话，那么就会默认执行
-	#return None
-	return nx,ny,1
+
+
+def test_move_point(x, y, step, angle=0):
+    nx = x + step * math.cos(angle)
+    ny = y - step * math.sin(angle)
+    # 如果函数没有返回值的话，那么就会默认执行
+    # return None
+    return nx, ny, 1
+
 
 '''
 
@@ -45,11 +51,14 @@ def test_move_point(x,y,step,angle=0):
 更合适的写法见下面一个函数: {@code test_variable_arguments_2(*numbers)}
 
 '''
+
+
 def test_variable_arguments(numbers):
-	sum=0
-	for i in numbers:
-		sum=sum+i
-	return sum
+    sum = 0
+    for i in numbers:
+        sum = sum + i
+    return sum
+
 
 '''
 这个方法可以传入可变参数，例如：
@@ -61,21 +70,25 @@ test_list=[1,2,34,5,6]
 test_variable_arguments_2(*test_list)
 
 '''
+
+
 def test_variable_arguments_2(*numbers):
-	sum=0
-	for i in numbers:
-		sum=sum+i
-	return sum
+    sum = 0
+    for i in numbers:
+        sum = sum + i
+    return sum
 
-#不受限制，可以任意传入的关键字参数
-def test_key_word_argument(name,age,**kw):
-	if 'city' in kw:
-		pass
-	if 'job' in kw:
-		pass
-	print('name:',name,'age:',age,'other:',kw)
 
-#限制传入的关键字参数名称
+# 不受限制，可以任意传入的关键字参数
+def test_key_word_argument(name, age, **kw):
+    if 'city' in kw:
+        pass
+    if 'job' in kw:
+        pass
+    print('name:', name, 'age:', age, 'other:', kw)
+
+
+# 限制传入的关键字参数名称
 '''
 
  		这个是关键字参数的用法，除了必须的2个参数name age之外，这个方法还允许
@@ -95,8 +108,10 @@ def test_key_word_argument(name,age,**kw):
 
 
 '''
-def test_key_word_special_argument(name,age,*,city,job):
-	print(name,age,city,job)
+
+
+def test_key_word_special_argument(name, age, *, city, job):
+    print(name, age, city, job)
 
 
 '''
@@ -126,42 +141,36 @@ def test_key_word_special_argument(name,age,*,city,job):
 	重新生成的那个空链接 : L=[]
 
 '''
-def test_default_argument(name,age,city='beijing'):
-	print(name,age,city)
+
+
+def test_default_argument(name, age, city='beijing'):
+    print(name, age, city)
 
 
 if __name__ == "__main__":
-	#test_input()
-	test_init_list()
-	x,y,z=test_move_point(100, 100, 60, math.pi / 6)
-	print('x is %s ' % x)
-	print('y is %s ' % y)
-	print('z is %s ' % z)
-	r = test_move_point(100, 100, 60, math.pi / 6)
-	#函数可以同时返回多个值，但其实就是一个tuple。
-	print(r)
+    # test_input()
+    test_init_list()
+    x, y, z = test_move_point(100, 100, 60, math.pi / 6)
+    print('x is %s ' % x)
+    print('y is %s ' % y)
+    print('z is %s ' % z)
+    r = test_move_point(100, 100, 60, math.pi / 6)
+    # 函数可以同时返回多个值，但其实就是一个tuple。
+    print(r)
 
-	#可变参数
-	numbers=[1,2,3,4,5]
-	numbers_resp=test_variable_arguments(numbers)
-	print(numbers_resp)
+    # 可变参数
+    numbers = [1, 2, 3, 4, 5]
+    numbers_resp = test_variable_arguments(numbers)
+    print(numbers_resp)
 
-	print(test_variable_arguments_2(1,2,3))
-	print(test_variable_arguments_2(*numbers))
+    print(test_variable_arguments_2(1, 2, 3))
+    print(test_variable_arguments_2(*numbers))
 
+    # 下面这种调用方法是不正确的
+    # 对于多参数的调用，需要加上*，方法才能接收
+    # print(test_variable_arguments_2(numbers))
 
-	#下面这种调用方法是不正确的
-	#对于多参数的调用，需要加上*，方法才能接收
-	#print(test_variable_arguments_2(numbers))
+    test_key_word_argument('husd', 20, city='beijing')
 
-	test_key_word_argument('husd', 20,city='beijing')
-
-	test_default_argument('husd', 20)
-	test_default_argument('husd', 20,'shanghai')
-
-
-
-
-
-
-
+    test_default_argument('husd', 20)
+    test_default_argument('husd', 20, 'shanghai')
